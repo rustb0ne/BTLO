@@ -2,8 +2,7 @@
 
 Uploaded `sample.doc` to VirusTotal to retrieve its SHA1 hash digest.
 
-![[img1.png]]
-
+![alt text](img1.png)
 Answer: 06727ffda60359236a8029e0b3e8a0fd11c23313
 
 # Question 2) According to VirusTotal, what is the full filetype of the provided sample?
@@ -16,7 +15,7 @@ Answer: Office Open XML Document
 
 From VirusTotal, I retrieved several URLs embedded in the document:
 
-![[img2.png]]
+![alt text](img2.png)
 
 Based on the required format (https://x.domain.tld/path/to/something) and the context of the Follina exploit, the malicious URL that triggers the vulnerability is the one pointing to the HTML file that invokes MSDT.
 
@@ -26,16 +25,16 @@ Answer: https://www.xmlformats.com/office/word/2022/wordprocessingDrawing/RDF842
 
 To find which XML file contains the extracted URL, I first attempted to dump `sample.doc` to strings and search for "RDF842l.html" but found nothing.
 
-![[img3.png]]
+![alt text](img3.png)
 
 Then I tried using `catdoc` to extract text:
 
-![[img4.png]]
+![alt text](img4.png)
 
 Since Office documents are ZIP archives, I unzipped the file and searched through the XML structure. The URL was found in the relationships file:
 
-![[img5.png]]
-![[img6.png]]
+![alt text](img5.png)
+![alt text](img6.png)
 
 Answer: document.xml.rels
 
@@ -59,7 +58,7 @@ https://app.any.run/tasks/713f05d2-fe78-4b9d-a744-f7c133e3fafb/
 
 Examining the process tree, the malware attempts to kill any existing instances of the Microsoft Support Diagnostic Tool process before executing its payload.
 
-![[img7.png]]
+![alt text](img7.png)
 
 Answer: msdt.exe
 
